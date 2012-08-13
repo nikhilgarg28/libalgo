@@ -1,0 +1,4 @@
+# Remove temporary files 
+*~
+# Remove all vim swap files
+*.swp

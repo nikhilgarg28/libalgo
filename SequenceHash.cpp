@@ -33,6 +33,7 @@ struct SequenceHash
 
 int main()
 {
+   //Example usage
     int A[] = { 1, 2, 3, 1, 2, 3};
     SequenceHash sh(VI(A));             // Just instantiate the SequenceHash 
     assert( sh.hash(0,2) == sh.hash(3,5));

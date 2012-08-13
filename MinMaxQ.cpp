@@ -3,6 +3,10 @@
 * Date   : 2010-12-31
 * A templatized MinMax Queue implementation.
 * Provides O(1) insert, delete, fimnMin and findMax opertions.
+* Assumption : all elements pushed in queue are different. This assumption can be 
+* relaxed after some extra book keeping code.
+* 
+* I'm pre allocating space for queues. This can also be changed by replacing vectors with STL queues.
 * 
 */
 
@@ -21,7 +25,7 @@ class MinMaxQueue
 		{
 			qf = qb = 0;       Q.resize(N);
 			qmaxf = qmaxb = 0; Qmax.resize(N);
-			qminf = qminb = 0; Qmin.resize(N);
+			qminf = qminb = 0; Qmin.resize(N);	
 		}
 		
 		void push(T v)
@@ -37,19 +41,14 @@ class MinMaxQueue
 		T pop()
 		{
 			T v = Q[qf++];
-			if (v == Qmax[qmaxf])	qmaxf++;
+			if (v == Qmax[qmaxf])	qmaxf ++;
 			if (v == Qmin[qminf])	qminf ++;
 			return v;
 		}
 
 		T front()   {  return Q[qf];		}
 		T getMax()  {  return Qmax[qmaxf];	}
-		T getMin()	{  return Qmin[qminf];	}
+		T getMin()  {  return Qmin[qminf];	}
 		
-		int size()	{  return qb - qf;		}
+		int size()  {  return qb - qf;		}
 };
-
-int main()
-{
-	MinMaxQueue<int> Q(1000000);			// This is the total number of push operations supported.
-}
